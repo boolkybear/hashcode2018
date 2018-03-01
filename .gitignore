@@ -80,3 +80,5 @@ About
 vcs.xml
 src/main/java/com/hashcode/Main.java.orig
 target/classes/com/hashcode/Car.class
+solution.txt
+.gitignore.orig
