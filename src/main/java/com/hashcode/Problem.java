@@ -77,6 +77,7 @@ public class Problem {
                 Vehicle car = findCarForRide(ride);
                 if (car != null) {
                     car.setRide(ride);
+                    pendingRides.remove(ride);
                 }
                 else {
                     if(ride.s == tick) {
