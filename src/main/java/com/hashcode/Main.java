@@ -57,8 +57,7 @@ public class Main {
         }
 
         // PROCESS DATA
-
-
+        Problem problema = new Problem(R, C, F, B, T, N, rides);
 
         // WRITE OUTPUT
 
