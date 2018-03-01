@@ -1,9 +1,6 @@
 package com.hashcode;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 
 public class Main {
@@ -17,13 +14,24 @@ public class Main {
 
     static int R, C, F, N, B, T;
     static ArrayList<Ride> rides = new ArrayList<Ride>();
+    static ArrayList<Car> cars = new ArrayList<Car>();
 
     public static void main(final String args[]) {
 
         // READ FILE
-        String line = null;
+        readInput();
 
+        // PROCESS DATA
+        Problem problema = new Problem(R, C, F, B, T, N, rides);
+
+
+        // WRITE OUTPUT
+        writeOutput();
+    }
+
+    private static void readInput() {
         try {
+            String line = null;
             FileReader fileReader = new FileReader(fileName);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
 
@@ -38,6 +46,7 @@ public class Main {
 
             int a, b, x, y, s, f;
 
+            int index = 0;
             while ((line = bufferedReader.readLine()) != null) {
                 tokens = line.split(" ");
                 a = Integer.parseInt(tokens[0]);
@@ -46,7 +55,8 @@ public class Main {
                 y = Integer.parseInt(tokens[3]);
                 s = Integer.parseInt(tokens[4]);
                 f = Integer.parseInt(tokens[5]);
-                rides.add(new Ride(a, b, x, y, s, f));
+                rides.add(new Ride(index, a, b, x, y, s, f));
+                index++;
             }
 
             bufferedReader.close();
@@ -56,10 +66,30 @@ public class Main {
             System.out.println("Error reading file '" + fileName + "'");
         }
 
-        // PROCESS DATA
-        Problem problema = new Problem(R, C, F, B, T, N, rides);
+    }
 
-        // WRITE OUTPUT
+    private static void writeOutput() {
+        try {
+            FileWriter fileWriter = new FileWriter("output/solution.txt");
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            StringBuffer stringBuffer = new StringBuffer();
 
+            Ride ride;
+            for (Car car : cars) {
+                int count = car.rides.size();
+                stringBuffer.append(count + " ");
+                for (int i = 0; i < count; i++) {
+                    stringBuffer.append(car.rides.get(i).index + (i == count-1 ? "\n" : " "));
+                }
+                bufferedWriter.write(stringBuffer.toString());
+                stringBuffer.setLength(0);
+            }
+
+            bufferedWriter.close();
+        } catch (FileNotFoundException ex) {
+            System.out.println("Unable to open file '" + fileName + "'");
+        } catch (IOException ex) {
+            System.out.println("Error reading file '" + fileName + "'");
+        }
     }
 }
