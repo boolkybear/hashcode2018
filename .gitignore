@@ -84,3 +84,5 @@ src/main/java/com/hashcode/Main.java.orig
 target/classes/com/hashcode/Car.class
 .gitignore.orig
 solution.txt
+solution.txt
+.gitignore.orig
