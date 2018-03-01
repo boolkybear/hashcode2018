@@ -56,14 +56,13 @@ public class Problem {
             }
 
             // delete impossible rides
-            ArrayList<Ride> pendingCopy = new ArrayList<Ride>();
+            ArrayList<Ride> ridesToDelete = new ArrayList<Ride>();
             for(Ride ride: pendingRides) {
-                if (ride.f >= tick) {
-                    continue;
+                if (ride.f <= tick) {
+                    ridesToDelete.add(ride);
                 }
-                pendingCopy.add(ride);
             }
-            pendingRides = pendingCopy;
+                pendingRides.removeAll(ridesToDelete);
 
             // traverse rides
             Integer keyTick = new Integer(tick);
@@ -80,7 +79,9 @@ public class Problem {
                     car.setRide(ride);
                 }
                 else {
-                    pendingRides.add(ride);
+                    if(ride.s == tick) {
+                        pendingRides.add(ride);
+                    }
                 }
             }
         }
