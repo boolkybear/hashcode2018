@@ -22,18 +22,22 @@ public class Main {
         readInput();
 
         // PROCESS DATA
-
+        processData();
 
         // WRITE OUTPUT
         writeOutput();
     }
 
-    private static void readInput() {
-        BufferedReader bufferedReader = null;
+    private static void processData() {
+//        GA.execute();
+    }
 
+    private static void readInput() {
+        FileReader fileReader = null;
+        BufferedReader bufferedReader = null;
         try {
             String line = null;
-            FileReader fileReader = new FileReader(fileName);
+            fileReader = new FileReader(fileName);
             bufferedReader = new BufferedReader(fileReader);
 
             line = bufferedReader.readLine();
@@ -59,13 +63,20 @@ public class Main {
                 rides.add(new Ride(index, a, b, x, y, s, f));
                 index++;
             }
+
         } catch (FileNotFoundException ex) {
             System.out.println("Unable to open file '" + fileName + "'");
         } catch (IOException ex) {
             System.out.println("Error reading file '" + fileName + "'");
-        } finally {
+        }
+        finally {
             try {
                 bufferedReader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            try {
+                fileReader.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -73,9 +84,11 @@ public class Main {
     }
 
     private static void writeOutput() {
+        FileWriter fileWriter = null;
+        BufferedWriter bufferedWriter = null;
         try {
-            FileWriter fileWriter = new FileWriter("output/solution.txt");
-            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            fileWriter = new FileWriter("output/solution.txt");
+            bufferedWriter = new BufferedWriter(fileWriter);
             StringBuffer stringBuffer = new StringBuffer();
 
             Ride ride;
@@ -88,12 +101,22 @@ public class Main {
                 bufferedWriter.write(stringBuffer.toString());
                 stringBuffer.setLength(0);
             }
-
-            bufferedWriter.close();
         } catch (FileNotFoundException ex) {
             System.out.println("Unable to open file '" + fileName + "'");
         } catch (IOException ex) {
             System.out.println("Error reading file '" + fileName + "'");
+        } finally {
+            try {
+                bufferedWriter.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            try {
+                fileWriter.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
