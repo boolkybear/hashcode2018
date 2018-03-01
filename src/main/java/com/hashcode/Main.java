@@ -5,12 +5,14 @@ import java.util.ArrayList;
 
 public class Main {
 
-    static String fileName1 = "a_example.in";
-    static String fileName2 = "b_should_be_easy.in";
-    static String fileName3 = "c_no_hurry.in";
-    static String fileName4 = "d_metropolis.in";
-    static String fileName5 = "e_high_bonus.in";
-    static String fileName = "input/" + fileName1;
+    static String fileName1 = "a_example";
+    static String fileName2 = "b_should_be_easy";
+    static String fileName3 = "c_no_hurry";
+    static String fileName4 = "d_metropolis";
+    static String fileName5 = "e_high_bonus";
+    static String fileName = fileName1;
+    static String inputFile = "input/" + fileName + ".in";
+    static String outputFile = "output/" + fileName + ".out";
 
     static int R, C, F, N, B, T;
     static ArrayList<Ride> rides = new ArrayList<Ride>();
@@ -37,7 +39,7 @@ public class Main {
         BufferedReader bufferedReader = null;
         try {
             String line = null;
-            fileReader = new FileReader(fileName);
+            fileReader = new FileReader(inputFile);
             bufferedReader = new BufferedReader(fileReader);
 
             line = bufferedReader.readLine();
@@ -65,9 +67,9 @@ public class Main {
             }
 
         } catch (FileNotFoundException ex) {
-            System.out.println("Unable to open file '" + fileName + "'");
+            System.out.println("Unable to open file '" + inputFile + "'");
         } catch (IOException ex) {
-            System.out.println("Error reading file '" + fileName + "'");
+            System.out.println("Error reading file '" + inputFile + "'");
         }
         finally {
             try {
@@ -87,7 +89,7 @@ public class Main {
         FileWriter fileWriter = null;
         BufferedWriter bufferedWriter = null;
         try {
-            fileWriter = new FileWriter("output/solution.txt");
+            fileWriter = new FileWriter(outputFile);
             bufferedWriter = new BufferedWriter(fileWriter);
             StringBuffer stringBuffer = new StringBuffer();
 
@@ -96,15 +98,15 @@ public class Main {
                 int count = car.rides.size();
                 stringBuffer.append(count + " ");
                 for (int i = 0; i < count; i++) {
-                    stringBuffer.append(car.rides.get(i).index + (i == count-1 ? "\n" : " "));
+                    stringBuffer.append(car.rides.get(i).index + (i == count-1 ? "" : " "));
                 }
-                bufferedWriter.write(stringBuffer.toString());
+                bufferedWriter.write(stringBuffer.toString() + "\n");
                 stringBuffer.setLength(0);
             }
         } catch (FileNotFoundException ex) {
-            System.out.println("Unable to open file '" + fileName + "'");
+            System.out.println("Unable to open file '" + outputFile + "'");
         } catch (IOException ex) {
-            System.out.println("Error reading file '" + fileName + "'");
+            System.out.println("Error reading file '" + outputFile + "'");
         } finally {
             try {
                 bufferedWriter.close();
