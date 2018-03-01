@@ -22,17 +22,22 @@ public class Main {
         readInput();
 
         // PROCESS DATA
-
+        processData();
 
         // WRITE OUTPUT
         writeOutput();
     }
 
+    private static void processData() {
+//        GA.execute();
+    }
+
     private static void readInput() {
+        BufferedReader bufferedReader = null;
         try {
             String line = null;
             FileReader fileReader = new FileReader(fileName);
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            bufferedReader = new BufferedReader(fileReader);
 
             line = bufferedReader.readLine();
             String[] tokens = line.split(" ");
@@ -58,11 +63,19 @@ public class Main {
                 index++;
             }
 
-            bufferedReader.close();
         } catch (FileNotFoundException ex) {
             System.out.println("Unable to open file '" + fileName + "'");
         } catch (IOException ex) {
             System.out.println("Error reading file '" + fileName + "'");
+        }
+        finally {
+            if (bufferedReader != null) {
+                try {
+                    bufferedReader.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 
