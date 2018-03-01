@@ -10,7 +10,8 @@ public class Main {
     static String fileName3 = "c_no_hurry.in";
     static String fileName4 = "d_metropolis.in";
     static String fileName5 = "e_high_bonus.in";
-    static String fileName = "input/" + fileName1;
+    //static String fileName = "/Users/jservetf/hashcode2018/input/" + fileName1;
+    static String fileName = "/Users/jservetf/hashcode2018/input/" + fileName2;
 
     static int R, C, F, N, B, T;
     static ArrayList<Ride> rides = new ArrayList<Ride>();
@@ -29,12 +30,16 @@ public class Main {
         writeOutput();
     }
 
-    private static void readInput() {
-        BufferedReader bufferedReader = null;
+    private static void processData() {
+//        GA.execute();
+    }
 
+    private static void readInput() {
+        FileReader fileReader = null;
+        BufferedReader bufferedReader = null;
         try {
             String line = null;
-            FileReader fileReader = new FileReader(fileName);
+            fileReader = new FileReader(fileName);
             bufferedReader = new BufferedReader(fileReader);
 
             line = bufferedReader.readLine();
@@ -60,13 +65,20 @@ public class Main {
                 rides.add(new Ride(index, a, b, x, y, s, f));
                 index++;
             }
+
         } catch (FileNotFoundException ex) {
             System.out.println("Unable to open file '" + fileName + "'");
         } catch (IOException ex) {
             System.out.println("Error reading file '" + fileName + "'");
-        } finally {
+        }
+        finally {
             try {
                 bufferedReader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            try {
+                fileReader.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -75,9 +87,11 @@ public class Main {
     }
 
     private static void writeOutput() {
+        FileWriter fileWriter = null;
+        BufferedWriter bufferedWriter = null;
         try {
-            FileWriter fileWriter = new FileWriter("output/solution.txt");
-            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            fileWriter = new FileWriter("output/solution.txt");
+            bufferedWriter = new BufferedWriter(fileWriter);
             StringBuffer stringBuffer = new StringBuffer();
 
             Ride ride;
@@ -90,12 +104,24 @@ public class Main {
                 bufferedWriter.write(stringBuffer.toString());
                 stringBuffer.setLength(0);
             }
-
-            bufferedWriter.close();
         } catch (FileNotFoundException ex) {
             System.out.println("Unable to open file '" + fileName + "'");
         } catch (IOException ex) {
             System.out.println("Error reading file '" + fileName + "'");
+        } finally {
+            try {
+                if (bufferedWriter != null)
+                bufferedWriter.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            try {
+                if(fileWriter != null)
+                fileWriter.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
