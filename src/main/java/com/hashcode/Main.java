@@ -23,17 +23,19 @@ public class Main {
 
         // PROCESS DATA
         Problem problema = new Problem(R, C, F, B, T, N, rides);
-
+        cars = problema.iterate();
 
         // WRITE OUTPUT
         writeOutput();
     }
 
     private static void readInput() {
+        BufferedReader bufferedReader = null;
+
         try {
             String line = null;
             FileReader fileReader = new FileReader(fileName);
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            bufferedReader = new BufferedReader(fileReader);
 
             line = bufferedReader.readLine();
             String[] tokens = line.split(" ");
@@ -58,12 +60,16 @@ public class Main {
                 rides.add(new Ride(index, a, b, x, y, s, f));
                 index++;
             }
-
-            bufferedReader.close();
         } catch (FileNotFoundException ex) {
             System.out.println("Unable to open file '" + fileName + "'");
         } catch (IOException ex) {
             System.out.println("Error reading file '" + fileName + "'");
+        } finally {
+            try {
+                bufferedReader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
     }
