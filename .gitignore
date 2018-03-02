@@ -86,3 +86,13 @@ target/classes/com/hashcode/Car.class
 solution.txt
 solution.txt
 .gitignore.orig
+output/a_example.out.txt
+output/b_should_be_easy.out.txt
+output/c_no_hurry.out.txt
+output/d_metropolis.out.txt
+output/e_high_bonus.out.txt
+output_old/a_example.out.txt
+output_old/b_should_be_easy.out.txt
+output_old/c_no_hurry.out.txt
+output_old/d_metropolis.out.txt
+output_old/e_high_bonus.out.txt
