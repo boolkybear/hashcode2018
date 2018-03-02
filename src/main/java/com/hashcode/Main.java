@@ -10,7 +10,7 @@ public class Main {
     static String fileName3 = "c_no_hurry";
     static String fileName4 = "d_metropolis";
     static String fileName5 = "e_high_bonus";
-    static String fileName = fileName3;
+    static String fileName = fileName5;
     static String inputFile = "input/" + fileName + ".in";
     static String outputFile = "output/" + fileName + ".out.txt";
 
