@@ -32,7 +32,7 @@ public class Main {
         // PROCESS DATA
         //Problem problema = new Problem(R, C, F, B, T, N, rides);
         //cars = problema.iterate();
-        ProblemRyP problema = new ProblemRyP(R, C, F, B, T, N, maxim, rides);
+        ProblemRyP problema = new ProblemRyP(R, C, (short)F, B, T, N, maxim, rides);
         cars = problema.solve();
 
         // WRITE OUTPUT

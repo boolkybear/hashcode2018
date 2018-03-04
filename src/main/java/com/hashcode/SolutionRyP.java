@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.Comparator;
 
 public class SolutionRyP {
-    final static int unassigned = -1;
+    final static short unassigned = -1;
 
-    int assignations[];
+    short assignations[];
     int upperIndex;
 
     ArrayList<Ride> rides;
@@ -20,10 +20,13 @@ public class SolutionRyP {
     int cachedValue;
     int estimatedValue;
     boolean isValid;
+    boolean isAllBooked;
+
+    int nodeNumber;
 
     ArrayList<Vehicle> vehicles;
 
-    SolutionRyP(int assignations[], int upperIndex, ArrayList<Ride> rides, int carCount, int stepCount, int rideCount, int bonus) {
+    SolutionRyP(short assignations[], int upperIndex, ArrayList<Ride> rides, int carCount, int stepCount, int rideCount, int bonus, int nodeNumber) {
         this.assignations = assignations;
         this.upperIndex = upperIndex;
 
@@ -37,11 +40,20 @@ public class SolutionRyP {
         this.estimatedValue = 0;
         this.isValid = true;
 
+        this.nodeNumber = nodeNumber;
+
         vehicles = new ArrayList<Vehicle>();
         for (int i = 0;i<carCount;i++) {
             vehicles.add(new Vehicle(0, 0));
         }
 
+        isAllBooked = true;
+        for(int i=0;i<upperIndex;i++) {
+            if(assignations[i] == unassigned) {
+                isAllBooked = false;
+                break;
+            }
+        }
         replayMovements();
     }
 
