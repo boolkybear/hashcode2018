@@ -5,14 +5,20 @@ import java.util.ArrayList;
 
 public class Main {
 
-    static String fileName1 = "a_example";
-    static String fileName2 = "b_should_be_easy";
-    static String fileName3 = "c_no_hurry";
-    static String fileName4 = "d_metropolis";
-    static String fileName5 = "e_high_bonus";
-    static String fileName = fileName5;
+    static String fileName1 = "a_example";          // 4
+    static String fileName2 = "b_should_be_easy";   // 176877
+    static String fileName3 = "c_no_hurry";         // 7918474
+    static String fileName4 = "d_metropolis";       // 7546286
+    static String fileName5 = "e_high_bonus";       // 21462614
+    static String fileName = fileName4;
     static String inputFile = "input/" + fileName + ".in";
     static String outputFile = "output/" + fileName + ".out.txt";
+    static int max1 = 4;    // 10
+    static int max2 = 176870;   // 176877
+    static int max3 = 7918474;  // 8102637
+    static int max4 = 7546286;
+    static int max5 = 21462614;
+    static int maxim = max4;
 
     static int R, C, F, N, B, T;
     static ArrayList<Ride> rides = new ArrayList<Ride>();
@@ -24,8 +30,10 @@ public class Main {
         readInput();
 
         // PROCESS DATA
-        Problem problema = new Problem(R, C, F, B, T, N, rides);
-        cars = problema.iterate();
+        //Problem problema = new Problem(R, C, F, B, T, N, rides);
+        //cars = problema.iterate();
+        ProblemRyP problema = new ProblemRyP(R, C, F, B, T, N, maxim, rides);
+        cars = problema.solve();
 
         // WRITE OUTPUT
         writeOutput();
