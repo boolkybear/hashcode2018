@@ -109,7 +109,7 @@ public class SolutionRyP {
             int distanciaAlOrigen = Math.abs(coche.endColumn - ride.a) + Math.abs(coche.endRow - ride.b);
             int tickToReach = coche.endTick + distanciaAlOrigen;
             int tickToReachEnd = tickToReach + ride.distance;
-            if(tickToReachEnd > ride.f) {
+            if(tickToReachEnd >= ride.f) {
                 isValid = false;
                 break;
             } else {

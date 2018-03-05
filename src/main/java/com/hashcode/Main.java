@@ -5,20 +5,20 @@ import java.util.ArrayList;
 
 public class Main {
 
-    static String fileName1 = "a_example";          // 4
-    static String fileName2 = "b_should_be_easy";   // 176877
-    static String fileName3 = "c_no_hurry";         // 7918474
+    static String fileName1 = "a_example";          // 4            (14)
+    static String fileName2 = "b_should_be_easy";   // 176877       (180798)
+    static String fileName3 = "c_no_hurry";         // 7918474      (16750973)
     static String fileName4 = "d_metropolis";       // 7546286
     static String fileName5 = "e_high_bonus";       // 21462614
-    static String fileName = fileName5;
+    static String fileName = fileName3;
     static String inputFile = "input/" + fileName + ".in";
     static String outputFile = "output/" + fileName + ".out.txt";
     static int max1 = 4;    // 10
     static int max2 = 176870;   // 176877               // 176741
-    static int max3 = 7918474;  // 8102637  // 8110368  // 7969846
-    static int max4 = 7546286;  // 7623160  // 8671805  // 7395350
-    static int max5 = 21462614; // 21472945 // 21476945 // 21388702
-    static int maxim = max5;
+    static int max3 = 8102637;  // 8102637  // 8110368  // 7969846
+    static int max4 = 8671805;  // 7623160  // 8671805  // 7395350
+    static int max5 = 21476945; // 21472945 // 21476945 // 21388702
+    static int maxim = max3;
 
     static int R, C, F, N, B, T;
     static ArrayList<Ride> rides = new ArrayList<Ride>();
