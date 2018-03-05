@@ -29,6 +29,13 @@ public class ProblemRyP {
         this.minimum = minimum;
 
         this.rides = rides;
+
+        int maximumValue = 0;
+        for(Ride ride : rides) {
+            maximumValue += ride.distance + bonus;
+        }
+
+        System.out.println("Maximum value: " + maximumValue);
     }
 
     ArrayList<Car> solve() {

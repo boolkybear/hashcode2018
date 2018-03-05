@@ -106,7 +106,7 @@ public class SolutionRyP {
             Ride ride = pair.getKey();
             Vehicle coche = pair.getValue();
 
-            int distanciaAlOrigen = Math.abs(coche.endColumn - ride.b) + Math.abs(coche.endRow - ride.a);
+            int distanciaAlOrigen = Math.abs(coche.endColumn - ride.a) + Math.abs(coche.endRow - ride.b);
             int tickToReach = coche.endTick + distanciaAlOrigen;
             int tickToReachEnd = tickToReach + ride.distance;
             if(tickToReachEnd > ride.f) {
