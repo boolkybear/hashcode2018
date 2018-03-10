@@ -26,7 +26,7 @@ public class Vehicle {
         int distY = ride.b - endRow;
         int timeToStart = Math.abs(distX) + Math.abs(distY);
 
-        startTick = Math.max(ride.s, endTick + ride.distance);
+        startTick = Math.max(ride.s, endTick + timeToStart);
         endTick = startTick + ride.distance;
         isFree = false;
         endRow = ride.y;
